@@ -10,7 +10,15 @@ import UIKit
 
 class SceneViewController: UIViewController {
 
-    override func viewDidLoad() {
+  @IBOutlet weak var MainText: UITextView!
+  @IBOutlet weak var LeftButton: UIButton!
+  @IBOutlet weak var RightButton: UIButton!
+  @IBOutlet weak var TitleBox: UILabel!
+  @IBOutlet weak var BackgroundImage: UIImageView!
+  
+  var storyPosition: String = "1"
+  
+  override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
