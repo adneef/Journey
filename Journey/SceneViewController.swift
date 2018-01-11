@@ -191,8 +191,10 @@ class SceneViewController: UIViewController {
                   13:[15: "||||", 16: "||||"],
                   14:[15: "||||", 16: "||||"],
                   ]
-  //decisionPoint uneeded for now.  In a future update, yes.
-//let decisionPoint: Bool = false
+  //decisionPoint unneeded for now.  In a future update, yes.
+  //let decisionPoint: Bool = false
+  
+  
   
   //variables for buttons and content
   var leftButtonNextSceneNumber: Int? = nil
@@ -202,12 +204,12 @@ class SceneViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    restartButton.isHidden = true
     renderStory(storyPosition, scenes, decisions)
   }
   
   func renderStory( _ pos: Int, _ scene: [Int: String], _ decision:[Int:[Int:String]]) {
     mainText.text = scene[pos]
+    restartButton.isHidden = true
     
     for k in decision[pos]!.keys {
       if leftButtonNextSceneNumber == nil {
@@ -225,7 +227,7 @@ class SceneViewController: UIViewController {
       }
     }
     
-    if leftButtonNextSceneNumber == 15 {
+    if leftButtonText == "||||" {
       leftButton.isHidden = true
       rightButton.isHidden = true
       restartButton.isHidden = false
@@ -236,17 +238,27 @@ class SceneViewController: UIViewController {
   }
   
   @IBAction func leftButtonPushed() {
+    print(leftButtonNextSceneNumber!)
     storyPosition = leftButtonNextSceneNumber!
+    leftButtonText = nil
+    leftButtonNextSceneNumber = nil
     renderStory(storyPosition, scenes, decisions)
   }
   
   @IBAction func rightButtonPushed() {
     storyPosition = rightButtonNextSceneNumber!
+    leftButtonText = nil
+    leftButtonNextSceneNumber = nil
     renderStory(storyPosition, scenes, decisions)
   }
   
   @IBAction func restart() {
     storyPosition = 1
+    leftButtonText = nil
+    leftButtonNextSceneNumber = nil
+    leftButton.isHidden = false
+    rightButton.isHidden = false
+    renderStory(storyPosition, scenes, decisions)
   }
     
 }
