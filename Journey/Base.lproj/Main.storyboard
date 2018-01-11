@@ -27,8 +27,8 @@
                                 <rect key="frame" x="16" y="20" width="343" height="627"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mS3-BE-N1O">
-                                <rect key="frame" x="92" y="554" width="191" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="mS3-BE-N1O">
+                                <rect key="frame" x="92" y="554" width="191" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="20"/>
@@ -40,10 +40,10 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kuq-FT-hfg">
-                                <rect key="frame" x="67" y="108" width="240" height="322"/>
+                                <rect key="frame" x="67" y="76" width="240" height="347.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <string key="text">Welcome to Journey, a choose-your-own-adventure-story app!  As you read the story, you'll have the option at many points to choose the path you want to go down.  Some paths will carry the story forward, some will end it, and you'll have the option to start again from the beginning.  I hope you enjoy!</string>
+                                <string key="text">Welcome to Journey, a choose-your-own-adventure-story app!  As you read the story, you'll have the option at many points to choose the path you want to go down.  Some paths will carry the story forward, some will end it where you'll have the option to start again from the beginning.  I hope you enjoy!</string>
                                 <color key="textColor" red="1" green="0.99997591969999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -69,22 +69,25 @@
                                 <rect key="frame" x="16" y="20" width="343" height="627"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRW-Vt-pzM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRW-Vt-pzM">
                                 <rect key="frame" x="154" y="40" width="66" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pij-UV-WkH">
-                                <rect key="frame" x="67" y="78" width="240" height="511"/>
+                                <rect key="frame" x="16" y="78" width="343" height="395"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
-                                <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="17"/>
+                                <viewLayoutGuide key="safeArea" id="TbM-dE-oZJ"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0dW-7G-JmK">
-                                <rect key="frame" x="272" y="599" width="60" height="26"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="0dW-7G-JmK">
+                                <rect key="frame" x="30" y="569" width="315" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="14"/>
                                 <state key="normal" title="Choice B">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -93,8 +96,9 @@
                                     <action selector="rightButtonPushed" destination="QxP-sV-xqr" eventType="touchUpInside" id="mwt-og-3SJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qND-Ge-hjk">
-                                <rect key="frame" x="43" y="599" width="61" height="26"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="qND-Ge-hjk">
+                                <rect key="frame" x="30" y="499" width="315" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="14"/>
                                 <state key="normal" title="Choice A">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -103,18 +107,19 @@
                                     <action selector="leftButtonPushed" destination="QxP-sV-xqr" eventType="touchUpInside" id="2Qb-uL-gya"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="M9n-rD-jA3">
+                                <rect key="frame" x="30" y="534" width="315" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="14"/>
+                                <state key="normal" title="Start Again">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="restart" destination="QxP-sV-xqr" eventType="touchUpInside" id="H3X-m8-v37"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="qND-Ge-hjk" firstAttribute="leading" secondItem="TtN-Z6-fgS" secondAttribute="leading" constant="43" id="6oX-J5-HWA"/>
-                            <constraint firstItem="TtN-Z6-fgS" firstAttribute="bottom" secondItem="0dW-7G-JmK" secondAttribute="bottom" constant="42" id="F7W-yI-99V"/>
-                            <constraint firstItem="TtN-Z6-fgS" firstAttribute="trailing" secondItem="0dW-7G-JmK" secondAttribute="trailing" constant="3" id="GYH-Cc-d2l"/>
-                            <constraint firstItem="hRW-Vt-pzM" firstAttribute="top" secondItem="TtN-Z6-fgS" secondAttribute="top" constant="20" id="XhG-0h-o8t"/>
-                            <constraint firstItem="0dW-7G-JmK" firstAttribute="leading" secondItem="qND-Ge-hjk" secondAttribute="trailing" constant="168" id="Ydf-9V-gnW"/>
-                            <constraint firstItem="0dW-7G-JmK" firstAttribute="leading" secondItem="qND-Ge-hjk" secondAttribute="trailing" constant="168" id="e6f-Ft-Oue"/>
-                            <constraint firstItem="TtN-Z6-fgS" firstAttribute="bottom" secondItem="qND-Ge-hjk" secondAttribute="bottom" constant="42" id="grL-Ln-3cn"/>
-                            <constraint firstItem="hRW-Vt-pzM" firstAttribute="centerX" secondItem="hVQ-Qg-Mwp" secondAttribute="centerX" id="lks-V2-KwC"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="TtN-Z6-fgS"/>
                     </view>
                     <connections>
@@ -122,11 +127,12 @@
                         <outlet property="LeftButton" destination="qND-Ge-hjk" id="KYD-J7-W5D"/>
                         <outlet property="MainText" destination="pij-UV-WkH" id="u9u-zy-HpD"/>
                         <outlet property="RightButton" destination="0dW-7G-JmK" id="1Mj-h8-Hsm"/>
+                        <outlet property="restartButton" destination="M9n-rD-jA3" id="CtA-Wd-jes"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qLs-wH-Eou" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1013.5" y="139.5"/>
+            <point key="canvasLocation" x="1096.8" y="133.5832083958021"/>
         </scene>
     </scenes>
     <resources>
