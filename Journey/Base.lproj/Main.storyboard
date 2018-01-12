@@ -79,7 +79,7 @@
                                 <size key="shadowOffset" width="0.5" height="0.5"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pij-UV-WkH">
-                                <rect key="frame" x="16" y="78" width="343" height="473"/>
+                                <rect key="frame" x="16" y="78" width="343" height="569"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <viewLayoutGuide key="safeArea" id="TbM-dE-oZJ"/>
@@ -89,7 +89,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="0dW-7G-JmK">
-                                <rect key="frame" x="30" y="594" width="315" height="35"/>
+                                <rect key="frame" x="30" y="610" width="315" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="14"/>
                                 <size key="titleShadowOffset" width="0.51000000000000001" height="0.5"/>
@@ -98,11 +98,11 @@
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <action selector="rightButtonPushed" destination="QxP-sV-xqr" eventType="touchUpInside" id="mwt-og-3SJ"/>
+                                    <action selector="bottomButtonPushed" destination="QxP-sV-xqr" eventType="touchUpInside" id="xi6-gD-5wS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="M9n-rD-jA3">
-                                <rect key="frame" x="30" y="559" width="315" height="35"/>
+                                <rect key="frame" x="30" y="575" width="315" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="14"/>
                                 <size key="titleShadowOffset" width="0.5" height="0.5"/>
@@ -115,7 +115,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="qND-Ge-hjk">
-                                <rect key="frame" x="30" y="559" width="315" height="35"/>
+                                <rect key="frame" x="30" y="542" width="315" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="14"/>
                                 <size key="titleShadowOffset" width="0.5" height="0.5"/>
@@ -124,7 +124,7 @@
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <action selector="leftButtonPushed" destination="QxP-sV-xqr" eventType="touchUpInside" id="2Qb-uL-gya"/>
+                                    <action selector="topButtonPushed" destination="QxP-sV-xqr" eventType="touchUpInside" id="uEi-PP-iBp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -133,10 +133,10 @@
                     </view>
                     <connections>
                         <outlet property="BackgroundImage" destination="ApA-Kp-kK7" id="FAE-Cc-Wjw"/>
-                        <outlet property="LeftButton" destination="qND-Ge-hjk" id="KYD-J7-W5D"/>
                         <outlet property="MainText" destination="pij-UV-WkH" id="u9u-zy-HpD"/>
-                        <outlet property="RightButton" destination="0dW-7G-JmK" id="1Mj-h8-Hsm"/>
+                        <outlet property="bottomButton" destination="0dW-7G-JmK" id="kQm-dm-NdK"/>
                         <outlet property="restartButton" destination="M9n-rD-jA3" id="CtA-Wd-jes"/>
+                        <outlet property="topButton" destination="qND-Ge-hjk" id="bpo-Ce-fG5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qLs-wH-Eou" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -20,26 +20,17 @@ class SceneViewController: UIViewController, UITextViewDelegate {
       mainText.delegate = self
     }
   }
-  
-  @IBOutlet weak var leftButton: UIButton!
-//  {
-//    didSet {
-//      leftButton.isHidden = true
-//    }
-//  }
-  
-  @IBOutlet weak var rightButton: UIButton!
+  @IBOutlet weak var topButton: UIButton!
+  @IBOutlet weak var bottomButton: UIButton!
   @IBOutlet weak var backgroundImage: UIImageView!
   @IBOutlet weak var restartButton: UIButton!
   
-//  LeftButton.isHidden = true
-//  RightButton.isHidden = true
   
   //variables that control the story flow and delivery content
   var storyPosition: Int = 1
   let scenes: [Int: String] =
     //MARK:  First scene
-    [1: "You startle awake, your senses overwhelmed - you're laying on something soft and crunchy, your whole body feels dull and sluggish, someone whispers in your ear, your eyes can't seem to focus.  Are they even open?  Yes, they are.  You're looking up at a blurry scene of white, green, and brown shaking and twisting violently.\n\nPain.\n\nCold?\n\nYou lay there for a moment, and take in a deep, frigid breath.\n\nIt\'s both.You decide to stand up, and see what's going on.  As you try, your motion is halted.  You look down and see a large branch laying on your leg.  It doesn't look too heavy.  You might be able to lift it off.  Or you could try to wriggle out from underneath of it.\n\nWhat do you do?",
+    [1: "You startle awake, your senses overwhelmed - you're laying on something soft and crunchy, your whole body feels dull and sluggish, someone whispers in your ear, your eyes can't seem to focus.  Are they even open?  Yes, they are.  You're looking up at a blurry scene of white, green, and brown shaking and twisting violently.\n\nPain.\n\nCold?\n\nYou lay there for a moment, and take in a deep, frigid breath.\n\nIt\'s both.You decide to stand up, and see what's going on.  As you try, your motion is halted.  You look down and see a large branch laying on your leg.  It doesn't look too heavy.  You might be able to lift it off.  Or you could try to wriggle out from underneath of it.\n\nWhat do you do?\n\n\n\n\n\n",
      //MARK:  Second scene
       
     2: """
@@ -191,23 +182,23 @@ class SceneViewController: UIViewController, UITextViewDelegate {
                   13:[15: "||||", 16: "||||"],
                   14:[15: "||||", 16: "||||"],
                   ]
-  //decisionPoint unneeded for now.  In a future update, yes.
+  //decisionPoint unneeded for now.  In a future update, perhaps.
   //let decisionPoint: Bool = false
   
   let backgroundsArray: [String] = []
   
   //variables for buttons and content
-  var leftButtonNextSceneNumber: Int? = nil
-  var rightButtonNextSceneNumber: Int? = nil
-  var leftButtonText: String? = nil
-  var rightButtonText: String? = nil
+  var topButtonNextSceneNumber: Int? = nil
+  var bottomButtonNextSceneNumber: Int? = nil
+  var topButtonText: String? = nil
+  var bottomButtonText: String? = nil
   var testButton: UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.backgroundImage.image = #imageLiteral(resourceName: "BlurrySnowTreesScaled.jpg")
     renderStory(storyPosition, scenes, decisions)
-    UIScreen.main.brightness = 0.2
+//    UIScreen.main.brightness = 0.2
 //    textViewDidScroll(mainText)
 //    toggleTorch(on: true)
 //    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
@@ -218,96 +209,91 @@ class SceneViewController: UIViewController, UITextViewDelegate {
   
   func renderStory( _ pos: Int, _ scene: [Int: String], _ decision:[Int:[Int:String]]) {
     mainText.scrollRangeToVisible(NSRange(location:0, length:0))
-//    textViewDidScroll(mainText)
     removeButton()
     restartButton.isHidden = true
     mainText.text = scene[pos]
-    appendButton(mainText)
+    appendButton(mainText, topButton, bottomButton, restartButton)
     
     for k in decision[pos]!.keys {
-      if leftButtonNextSceneNumber == nil {
-        leftButtonNextSceneNumber = k
+      if topButtonNextSceneNumber == nil {
+        topButtonNextSceneNumber = k
       } else {
-        rightButtonNextSceneNumber = k
+        bottomButtonNextSceneNumber = k
       }
     }
     
     for v in decision[pos]!.values {
-      if leftButtonText == nil {
-        leftButtonText = v
+      if topButtonText == nil {
+        topButtonText = v
       } else {
-        rightButtonText = v
+        bottomButtonText = v
       }
     }
     
-    if leftButtonText == "||||" {
-      leftButton.isHidden = true
-      rightButton.isHidden = true
+    if topButtonText == "||||" {
+      topButton.isHidden = true
+      bottomButton.isHidden = true
       restartButton.isHidden = false
     } else {
-      leftButton.setTitle("\(leftButtonText!)", for: .normal)
-      rightButton.setTitle("\(rightButtonText!)", for: .normal)
+      topButton.setTitle("\(topButtonText!)", for: .normal)
+      bottomButton.setTitle("\(bottomButtonText!)", for: .normal)
     }
   }
   
-  @IBAction func leftButtonPushed() {
-    storyPosition = leftButtonNextSceneNumber!
-    leftButtonText = nil
-    leftButtonNextSceneNumber = nil
+  @IBAction func topButtonPushed() {
+    storyPosition = topButtonNextSceneNumber!
+    topButtonText = nil
+    topButtonNextSceneNumber = nil
     renderStory(storyPosition, scenes, decisions)
   }
   
-  @IBAction func rightButtonPushed() {
-    storyPosition = rightButtonNextSceneNumber!
-    leftButtonText = nil
-    leftButtonNextSceneNumber = nil
+  @IBAction func bottomButtonPushed() {
+    storyPosition = bottomButtonNextSceneNumber!
+    topButtonText = nil
+    topButtonNextSceneNumber = nil
     renderStory(storyPosition, scenes, decisions)
   }
   
   @IBAction func restart() {
     storyPosition = 1
-    leftButtonText = nil
-    leftButtonNextSceneNumber = nil
-    leftButton.isHidden = false
-    rightButton.isHidden = false
+    topButtonText = nil
+    topButtonNextSceneNumber = nil
+    topButton.isHidden = false
+    bottomButton.isHidden = false
     renderStory(storyPosition, scenes, decisions)
   }
   
-  func appendButton( _ textView: UITextView) {
-    let buttonHeight: CGFloat = 40
+  func appendButton( _ textView: UITextView, _ buttonTop: UIButton, _ buttonBottom: UIButton, _ resetButton: UIButton) {
+    let buttonHeight = buttonTop.frame.height
     let contentInset: CGFloat = 8
     
-    print("The amount of content in the mainTextView is: \(textView.contentSize)")
     textView.contentSize = CGSize(width: textView.contentSize.width, height: textView.contentSize.height
-    + buttonHeight * 1.5)
-    print("Increased the amount of content in the mainTextView is: \(textView.contentSize)")
+    + buttonHeight * 3)
     
-    textView.textContainerInset = UIEdgeInsets(top: contentInset, left: contentInset, bottom: (buttonHeight + contentInset * 2), right: contentInset)
+    textView.textContainerInset = UIEdgeInsets(top: contentInset, left: contentInset, bottom: (buttonHeight + contentInset), right: contentInset)
     
-    testButton = UIButton(frame: CGRect(x: contentInset, y: textView.contentSize.height - buttonHeight -  contentInset, width: textView.contentSize.width - contentInset * 2, height: buttonHeight))
+//    testButton = UIButton(frame: CGRect(x: contentInset, y: textView.contentSize.height - buttonHeight -  contentInset, width: textView.contentSize.width - contentInset * 2, height: buttonHeight))
+    buttonTop.frame.origin = CGPoint(x: contentInset, y: textView.contentSize.height - buttonHeight * 3 -  contentInset)
+    buttonBottom.frame.origin = CGPoint(x: contentInset, y: textView.contentSize.height - buttonHeight * 2 - contentInset)
+    resetButton.frame.origin = CGPoint(x: contentInset, y: textView.contentSize.height - buttonHeight - contentInset)
     
-    testButton.setTitle("BUTTON", for: .normal)
-    testButton.setTitleColor(UIColor.red, for: .normal)
-    testButton.backgroundColor = UIColor.lightGray
+//    testButton.setTitle("BUTTON", for: .normal)
+//    testButton.setTitleColor(UIColor.red, for: .normal)
+//    testButton.backgroundColor = UIColor.lightGray
     
-    textView.addSubview(testButton)
+    textView.addSubview(buttonTop)
+    textView.addSubview(buttonBottom)
+    textView.addSubview(resetButton)
   }
   
   func removeButton() {
-    if let testButton = testButton {
-     testButton.removeFromSuperview()
+    if let topButton = topButton, let bottomButton = bottomButton, let restartButton = restartButton {
+      topButton.removeFromSuperview()
+      bottomButton.removeFromSuperview()
+      restartButton.removeFromSuperview()
     } else {
       print("No button to remove!")
     }
-  }
-  
-  func textViewDidScroll(_ scrollView: UIScrollView) {
-    
-    leftButton.isHidden = scrollView.contentOffset.y + scrollView.bounds.height < scrollView.contentSize.height
-    
-//    if (scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.frame.size.height) {
-//      print( "View scrolled to the bottom" )
-//    }
   }
   
   func toggleTorch(on: Bool) {
