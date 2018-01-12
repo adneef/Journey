@@ -10,6 +10,8 @@ import UIKit
 
 import AVFoundation
 
+import AudioToolbox
+
 class SceneViewController: UIViewController, UITextViewDelegate {
 
   //variables for the moving display parts of the app
@@ -37,21 +39,7 @@ class SceneViewController: UIViewController, UITextViewDelegate {
   var storyPosition: Int = 1
   let scenes: [Int: String] =
     //MARK:  First scene
-    [1: """
-      You startle awake, your senses overwhelmed - you're laying on something soft and crunchy, your whole body feels dull and sluggish, someone whispers in your ear, your eyes can't seem to focus.  Are they even open?  Yes, they are.  You're looking up at a blurry scene of white, green, and brown shaking and twisting violently.
-      
-      Pain.
-      
-      Cold?
-      
-      You lay there for a moment, and take in a deep, frigid breath.
-      
-      It\'s both.
-      
-      You decide to stand up, and see what's going on.  As you try, your motion is halted.  You look down and see a large branch laying on your leg.  It doesn't look too heavy.  You might be able to lift it off.  Or you could try to wriggle out from underneath of it.
-      
-      What do you do?
-      """,
+    [1: "You startle awake, your senses overwhelmed - you're laying on something soft and crunchy, your whole body feels dull and sluggish, someone whispers in your ear, your eyes can't seem to focus.  Are they even open?  Yes, they are.  You're looking up at a blurry scene of white, green, and brown shaking and twisting violently.\n\nPain.\n\nCold?\n\nYou lay there for a moment, and take in a deep, frigid breath.\n\nIt\'s both.You decide to stand up, and see what's going on.  As you try, your motion is halted.  You look down and see a large branch laying on your leg.  It doesn't look too heavy.  You might be able to lift it off.  Or you could try to wriggle out from underneath of it.\n\nWhat do you do?",
      //MARK:  Second scene
       
     2: """
@@ -68,7 +56,6 @@ class SceneViewController: UIViewController, UITextViewDelegate {
       You decide to look around.  You quickly notice a glove on the ground near you.  You pick it up and put it on.  Now you have a set, and your cold hand is covered.  Your vision starts to clear and you take a step away from the three.  You look around and notice tracks, footprints leading toward you, and more tracks leading away but fewer of them.  Both seem to head toward more trees, both on flat ground. There doesn't seem to be any difference in terrain.
       
       Which way?
-
       """,
     //MARK: Fourth scene
     4: """
@@ -84,17 +71,17 @@ class SceneViewController: UIViewController, UITextViewDelegate {
     5: """
       You start walking against the tracks, curious what people were moving away from.  You crunch your way through the snowy forest, listening to the wind gust and howl as the the trees groan from the force of it.  The scenery is constant - brown bark, green-needled trees, flecks of pure white snow dotting the landscape from every angle, making distances hard to judge, the whole scene wrapped in a sonic cocoon of ever present, shifting air.  You plod on...
       
-      The sun is at your back and dips low in the sky you come to the edge of the forest.  Beyond the trees the wind is a tide carrying snow in every direction, seeming to never let it fall to the ground, and breaking on the first few rows of trees, right where the tracks lead.  The sound vibrates your bones.  You pull up your hood and walk to the last row of trees, peering out beyond the forest's edge.  The wind is deafening, the snow is blinding, but as you squint against the snow, you can make out a couple of dark objects not far away.  You pull your hood tight and take a step beyond the trees.
+      The sun is at your back and dips low in the sky you come to the edge of the forest.  Beyond the trees the wind is a tide carrying snow in every direction, seeming to never let it fall to the ground, and breaking on the first few rows of trees, right where the tracks lead.  The sound vibrates your bones. The wind is deafening, the snow blinding, but as you squint against the snow, you can make out a couple of dark objects not far away.  You pull your hood tight and take a step beyond the trees.
       
       You stumble as you're blasted sideways.  You take several quick steps and almost fall before you recover.  The objects are close now.  You fight for a few more steps to bring them in to focus.  You can't be more than five feet away, but the whiteout forces you closer to make them out.
       
-      Rocks.  They're exposed rocks.  You're near the edge of a ravine.  You quickly scan from left to right looking for more details.  Something there, to the right, darker than the bare rocks.  You stumble toward it unsteadily, buffeted by the wind at every step.  You move in on the dark object.  It's a boot - a single black boot, just like the pair you're wearing, filled with snow and lodged between two rocks.  You pull the boot free, wondering where the owner is.  You take a very careful step toward the ravine, hoping and not hoping to see...anything.
+      Rocks.  They're exposed rocks.  You're near the edge of a ravine.  You carefully step toward the ravine, hoping and not hoping to see...anything.
       
-      Suddenly the wind blasts you from behind.  You turn around to lean in to it, crouch low to reduce your surface area.  The sun is a dispersed orange blob through the blizzard.  You put your head down to ride out the gust.  Once it abates, you look up to see the sun partially obscured.  There's something very dark, tall, and thin, like a small tree, blocking what little sunlight is coming through.  The thing is beyond the tree line.  Was there a 'tree' that far out before?  You can't remember - you were too busy fighting the wind and snow.
+      Suddenly the wind blasts you from behind.  You turn around to lean in to it, crouch low to reduce your surface area.  The sun is a dispersed orange blob through the blizzard.  You put your head down to ride out the gust.  Once it abates, you look up - the sun is partially obscured.  There's something very dark, tall, and thin, like a small tree, blocking what little sunlight is coming through the snow screen.  The thing is past the trees.  Was there a 'tree' that far out before?  You can't remember - you were too busy fighting the wind and snow.
       
       You take the opportunity to look back at the ravine, thinking you might see something now that the wind died down.  You peer over the edge but see nothing.  The ravine is deeper than you thought.
       
-      You hear a crunch behind you.  You turn quickly to see that thing from before an arm's length away - dark and looming over you.  Surprised, you take in a quick breath and instinctively take a step backward, in to the ravine...
+      You hear a crunch behind you.  You turn quickly to see the thing an arm's length away - dark and looming.  Surprised, you take in a quick breath and instinctively take a step backward, in to the ravine...
       """,
     //MARK: Sixth scene
     6:"""
@@ -152,7 +139,7 @@ class SceneViewController: UIViewController, UITextViewDelegate {
       
       Crack.
       
-      That time from the other side.  You turn your head quickly to look, but it's too dark to see anything.  The wind gusts, sharp but softly.  You slowly turn your head to look forward, and see nothing but darkness, darker than the black surrounding it.  The darkness shifts into very thin tendrils that move toward you.  You try to run but can't, you're paralyzed.  The darkness wraps around you, and the last thing you remember is opening your eyes as wide as you can, and still being unable to see...
+      From the other side.  You turn your head quickly to look, but it's too dark to see anything.  The wind gusts, sharp but softly.  You slowly turn your head to look forward, and see nothing but darkness, darker than the black surrounding it.  The darkness shifts into very thin tendrils that move toward you.  You try to run but can't, you're paralyzed.  The darkness wraps around you, and the last thing you remember is opening your eyes as wide as you can, and still being unable to see...
       """,
       //MARK:  Twelfth scene
       12:"""
@@ -167,11 +154,11 @@ class SceneViewController: UIViewController, UITextViewDelegate {
       """,
       //MARK: Thirteenth Scene
       13: """
-        You stand up and hurl yourself off the cliff, unsure of what lies below.  You fall long enough to take a second breath, then your entire body is stabbed with daggers of ice as your descent slows.  You exhale reflexively in the arctic water, then push toward what you think is the surface, brain in shock, body heavy with clothing, and little to no air left in your lungs to fuel your muscles.  The water's getting darker as you swim...up?  Or is it your vision?  You can't think clearly as the last of your oxygen goes.
+        You stand and hurl yourself off the cliff, unsure of what lies below.  You fall long enough to take a second breath, then your entire body is stabbed with daggers of ice as your descent slows.  You exhale reflexively in the arctic water, then push toward what you think is the surface, brain in shock, body heavy with clothing, and little to no air left in your lungs to fuel your muscles.  The water's getting darker as you swim...up?  Or is it your vision?  You can't think clearly as the last of your oxygen goes.
       
-        You manage another stroke, two strokes, and your head breaks the surface.  You gulp in the air greedily, only to fall back under again, the weight of your soaked clothes dragging you down.  You force yourself up again, and stay up this time.  You begin to swim forward with what little energy you have left.  You swim for awhile, getting pushed around by the water's current, until you bump into something slimy and floating.  You wrap your arms around the object, and hold on, too tired to do anything else.  The object buoys you up, so in one final great push, you throw your body on top of the object, probably a log, and hang on.  As you slowly drift, your eyes, as heavy as your water-laden clothing, slide shut...
+        You manage another stroke, two strokes, and your head breaks the surface.  You gulp in the air greedily, only to fall back under again, the weight of your soaked clothes dragging you down.  You force yourself up again, and bump into something slimy and floating.  You wrap your arms around it, too tired to do anything else.  The object buoys you up, so in one final great push, you throw your body on top of the thing, probably a log, and hang on.  As you slowly drift, your eyes, as heavy as your water-laden clothing, droop shut...
       
-        You wake up in a bed, your wet clothes no longer on you, but replaced with clean dry ones.  You can see your clothing laid out by a roaring fire in a large stone fireplace across the room.  A man is sleeping nearby in a chair, and stirs as you begin to move and make noise.  He blinks a couple times, then looks at you.
+        You wake up in a bed, your wet clothes replaced with clean, dry ones.  You can see your clothing laid out by a roaring fire in a large stone fireplace across the room.  A man is sleeping nearby in a chair, and stirs as you begin to move and make noise.  He blinks a couple times, then looks at you.
       
         'Who...' you begin.
       
@@ -215,13 +202,18 @@ class SceneViewController: UIViewController, UITextViewDelegate {
   var leftButtonText: String? = nil
   var rightButtonText: String? = nil
   var testButton: UIButton!
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.backgroundImage.image = #imageLiteral(resourceName: "BlurrySnowTreesScaled.jpg")
     renderStory(storyPosition, scenes, decisions)
+    UIScreen.main.brightness = 0.2
 //    textViewDidScroll(mainText)
-    toggleTorch(on: true)
+//    toggleTorch(on: true)
+//    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+//    AudioServicesPlaySystemSound(1519)
+//    AudioServicesPlaySystemSound(1520)
+//    AudioServicesPlaySystemSound(1521)
   }
   
   func renderStory( _ pos: Int, _ scene: [Int: String], _ decision:[Int:[Int:String]]) {
@@ -282,12 +274,17 @@ class SceneViewController: UIViewController, UITextViewDelegate {
   }
   
   func appendButton( _ textView: UITextView) {
-    let buttonHeight: CGFloat = 44
-    let contentInset: CGFloat = 1
+    let buttonHeight: CGFloat = 40
+    let contentInset: CGFloat = 8
+    
+    print("The amount of content in the mainTextView is: \(textView.contentSize)")
+    textView.contentSize = CGSize(width: textView.contentSize.width, height: textView.contentSize.height
+    + buttonHeight * 1.5)
+    print("Increased the amount of content in the mainTextView is: \(textView.contentSize)")
     
     textView.textContainerInset = UIEdgeInsets(top: contentInset, left: contentInset, bottom: (buttonHeight + contentInset * 2), right: contentInset)
     
-    testButton = UIButton(frame: CGRect(x: contentInset, y: textView.contentSize.height - buttonHeight - contentInset, width: textView.contentSize.width - contentInset * 2, height: buttonHeight))
+    testButton = UIButton(frame: CGRect(x: contentInset, y: textView.contentSize.height - buttonHeight -  contentInset, width: textView.contentSize.width - contentInset * 2, height: buttonHeight))
     
     testButton.setTitle("BUTTON", for: .normal)
     testButton.setTitleColor(UIColor.red, for: .normal)
