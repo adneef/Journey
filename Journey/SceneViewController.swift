@@ -197,7 +197,7 @@ class SceneViewController: UIViewController, UITextViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.backgroundImage.image = #imageLiteral(resourceName: "BlurrySnowTreesScaled.jpg")
-    setInsets(mainText)
+    updateFormatting(mainText)
     renderStory(storyPosition, scenes, decisions)
 //    UIScreen.main.brightness = 0.2
 //    textViewDidScroll(mainText)
@@ -209,11 +209,11 @@ class SceneViewController: UIViewController, UITextViewDelegate {
   }
   
   func renderStory( _ pos: Int, _ scene: [Int: String], _ decision:[Int:[Int:String]]) {
-    mainText.scrollRangeToVisible(NSRange(location:0, length:0))
     removeButton()
     restartButton.isHidden = true
     mainText.text = scene[pos]
     appendButton(mainText, topButton, bottomButton, restartButton)
+    mainText.scrollRangeToVisible(NSRange(location:0, length:0))
     
     for k in decision[pos]!.keys {
       if topButtonNextSceneNumber == nil {
@@ -273,8 +273,8 @@ class SceneViewController: UIViewController, UITextViewDelegate {
     
 //    testButton = UIButton(frame: CGRect(x: contentInset, y: textView.contentSize.height - buttonHeight -  contentInset, width: textView.contentSize.width - contentInset * 2, height: buttonHeight))
     buttonTop.frame.origin = CGPoint(x: contentInset, y: textView.contentSize.height - buttonHeight * 3 -  contentInset)
-    buttonBottom.frame.origin = CGPoint(x: contentInset, y: textView.contentSize.height - buttonHeight * 2 - contentInset)
     resetButton.frame.origin = CGPoint(x: contentInset, y: textView.contentSize.height - buttonHeight - contentInset)
+    buttonBottom.frame.origin = CGPoint(x: contentInset, y: textView.contentSize.height - buttonHeight - contentInset)
     
 //    testButton.setTitle("BUTTON", for: .normal)
 //    testButton.setTitleColor(UIColor.red, for: .normal)
@@ -295,29 +295,38 @@ class SceneViewController: UIViewController, UITextViewDelegate {
     }
   }
   
-  func toggleTorch(on: Bool) {
-    guard let device = AVCaptureDevice.default(for: .video) else { return }
-    
-    if device.hasTorch {
-      do {
-        try device.lockForConfiguration()
-        
-        if on == true {
-          device.torchMode = .on
-        } else {
-          device.torchMode = .off
-        }
-        
-        device.unlockForConfiguration()
-      } catch {
-        print("Torch could not be used")
-      }
-    } else {
-      print("Torch is not available")
-    }
+//  func toggleTorch(on: Bool) {
+//    guard let device = AVCaptureDevice.default(for: .video) else { return }
+//
+//    if device.hasTorch {
+//      do {
+//        try device.lockForConfiguration()
+//
+//        if on == true {
+//          device.torchMode = .on
+//        } else {
+//          device.torchMode = .off
+//        }
+//
+//        device.unlockForConfiguration()
+//      } catch {
+//        print("Torch could not be used")
+//      }
+//    } else {
+//      print("Torch is not available")
+//    }
+//  }
+  
+  func updateFormatting(_ textView: UITextView){
+    textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: (topButton.frame.height + 8), right: 8)
+    fixButtonLabels(topButton)
+    fixButtonLabels(bottomButton)
+    fixButtonLabels(restartButton)
   }
   
-  func setInsets(_ textView: UITextView){
-    textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: (topButton.frame.height + 8), right: 8)
+  func fixButtonLabels(_ button: UIButton) {
+    button.contentVerticalAlignment = .fill
+    button.contentMode = .center
+    button.imageView?.contentMode = .scaleAspectFit
   }
 }
