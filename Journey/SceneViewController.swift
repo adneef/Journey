@@ -30,7 +30,7 @@ class SceneViewController: UIViewController, UITextViewDelegate {
   var storyPosition: Int = 1
   let scenes: [Int: String] =
     //MARK:  First scene
-    [1: "You startle awake, your senses overwhelmed - you're laying on something soft and crunchy, your whole body feels dull and sluggish, someone whispers in your ear, your eyes can't seem to focus.  Are they even open?  Yes, they are.  You're looking up at a blurry scene of white, green, and brown shaking and twisting violently.\n\nPain.\n\nCold?\n\nYou lay there for a moment, and take in a deep, frigid breath.\n\nIt\'s both.You decide to stand up, and see what's going on.  As you try, your motion is halted.  You look down and see a large branch laying on your leg.  It doesn't look too heavy.  You might be able to lift it off.  Or you could try to wriggle out from underneath of it.\n\nWhat do you do?\n\n\n\n\n\n",
+    [1: "You startle awake, your senses overwhelmed - you're laying on something soft and crunchy, your whole body feels dull and sluggish, someone whispers in your ear, your eyes can't seem to focus.  Are they even open?  Yes, they are.  You're looking up at a blurry scene of white, green, and brown shaking and twisting violently.\n\nPain.\n\nCold?\n\nYou lay there for a moment, and take in a deep, frigid breath.\n\nIt\'s both.You decide to stand up, and see what's going on.  As you try, your motion is halted.  You look down and see a large branch laying on your leg.  It doesn't look too heavy.  You might be able to lift it off.  Or you could try to wriggle out from underneath of it.\n\nWhat do you do?",
      //MARK:  Second scene
       
     2: """
@@ -197,6 +197,7 @@ class SceneViewController: UIViewController, UITextViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.backgroundImage.image = #imageLiteral(resourceName: "BlurrySnowTreesScaled.jpg")
+    setInsets(mainText)
     renderStory(storyPosition, scenes, decisions)
 //    UIScreen.main.brightness = 0.2
 //    textViewDidScroll(mainText)
@@ -270,8 +271,6 @@ class SceneViewController: UIViewController, UITextViewDelegate {
     textView.contentSize = CGSize(width: textView.contentSize.width, height: textView.contentSize.height
     + buttonHeight * 3)
     
-    textView.textContainerInset = UIEdgeInsets(top: contentInset, left: contentInset, bottom: (buttonHeight + contentInset), right: contentInset)
-    
 //    testButton = UIButton(frame: CGRect(x: contentInset, y: textView.contentSize.height - buttonHeight -  contentInset, width: textView.contentSize.width - contentInset * 2, height: buttonHeight))
     buttonTop.frame.origin = CGPoint(x: contentInset, y: textView.contentSize.height - buttonHeight * 3 -  contentInset)
     buttonBottom.frame.origin = CGPoint(x: contentInset, y: textView.contentSize.height - buttonHeight * 2 - contentInset)
@@ -316,5 +315,9 @@ class SceneViewController: UIViewController, UITextViewDelegate {
     } else {
       print("Torch is not available")
     }
+  }
+  
+  func setInsets(_ textView: UITextView){
+    textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: (topButton.frame.height + 8), right: 8)
   }
 }
