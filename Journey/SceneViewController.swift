@@ -8,11 +8,24 @@
 
 import UIKit
 
-class SceneViewController: UIViewController {
+import AVFoundation
+
+class SceneViewController: UIViewController, UITextViewDelegate {
 
   //variables for the moving display parts of the app
-  @IBOutlet weak var mainText: UITextView!
+  @IBOutlet weak var mainText: UITextView! {
+    didSet {
+      mainText.delegate = self
+    }
+  }
+  
   @IBOutlet weak var leftButton: UIButton!
+//  {
+//    didSet {
+//      leftButton.isHidden = true
+//    }
+//  }
+  
   @IBOutlet weak var rightButton: UIButton!
   @IBOutlet weak var backgroundImage: UIImageView!
   @IBOutlet weak var restartButton: UIButton!
@@ -48,7 +61,7 @@ class SceneViewController: UIViewController {
       """,
     //MARK: Third scene
     3: """
-      You wiggle out from under it. You slowly stand up.  You're groggy, feeling more aches and pains that you didn't notice until now Suddenly you get dizzy,  You reach a hand out toward the nearest tree to steady yourself, putting the other hand on your throbbing head. The wind gusts louder as the trees shake and creak.
+      You wiggle out from under it. You slowly stand up.  You're groggy, feeling more aches and pains that you didn't notice until now Suddenly you get dizzy.  You reach a hand out toward the nearest tree to steady yourself, putting the other hand on your throbbing head. The wind gusts louder as the trees shake and creak.
       
       You feel something crusty on your face with your...bare hand?  It's too cold for bare hands.  Your hand comes away clean, but you're sure the crust is blood.  You must have broken that branch off this tree while running, knocked yourself out cold, and the branch dropped on your foot.  Why where you running?   You try to think back, but you can't remember.
       
@@ -73,11 +86,11 @@ class SceneViewController: UIViewController {
       
       The sun is at your back and dips low in the sky you come to the edge of the forest.  Beyond the trees the wind is a tide carrying snow in every direction, seeming to never let it fall to the ground, and breaking on the first few rows of trees, right where the tracks lead.  The sound vibrates your bones.  You pull up your hood and walk to the last row of trees, peering out beyond the forest's edge.  The wind is deafening, the snow is blinding, but as you squint against the snow, you can make out a couple of dark objects not far away.  You pull your hood tight and take a step beyond the trees.
       
-      You stumble as your blasted sideways.  You take several quick steps and almost fall before you recover.  The objects are close now.  You fight for a few more steps to bring them in to focus.  You can't be more than five feet away, but the whiteout forces you closer to make them out.
+      You stumble as you're blasted sideways.  You take several quick steps and almost fall before you recover.  The objects are close now.  You fight for a few more steps to bring them in to focus.  You can't be more than five feet away, but the whiteout forces you closer to make them out.
       
       Rocks.  They're exposed rocks.  You're near the edge of a ravine.  You quickly scan from left to right looking for more details.  Something there, to the right, darker than the bare rocks.  You stumble toward it unsteadily, buffeted by the wind at every step.  You move in on the dark object.  It's a boot - a single black boot, just like the pair you're wearing, filled with snow and lodged between two rocks.  You pull the boot free, wondering where the owner is.  You take a very careful step toward the ravine, hoping and not hoping to see...anything.
       
-      Suddenly the wind blasts you from behind.  You turn around to lean in to it, crouch low to reduce your surface area.  The sun is a dispersed orange blob through the blizzard.  You put your head down to ride out the gust.  Once it abates, you look up to see the sun partially obscured.  There's something very dark, tall, and thin, like a small tree, blocking what little sunlight is coming through.  The thing is beyond the tree line.  Was there a tree that far out before?  You can't remember you were too busy fighting the wind and snow.
+      Suddenly the wind blasts you from behind.  You turn around to lean in to it, crouch low to reduce your surface area.  The sun is a dispersed orange blob through the blizzard.  You put your head down to ride out the gust.  Once it abates, you look up to see the sun partially obscured.  There's something very dark, tall, and thin, like a small tree, blocking what little sunlight is coming through.  The thing is beyond the tree line.  Was there a 'tree' that far out before?  You can't remember - you were too busy fighting the wind and snow.
       
       You take the opportunity to look back at the ravine, thinking you might see something now that the wind died down.  You peer over the edge but see nothing.  The ravine is deeper than you thought.
       
@@ -182,7 +195,7 @@ class SceneViewController: UIViewController {
                   4:[6: "Rekindle the fire", 7: "Take a look around"],
                   5:[15: "||||", 16: "||||"],
                   6:[15: "||||", 16: "||||"],
-                  7:[8: "Take a look the sticks", 6: "It's getting dark, I'll build up the fire"],
+                  7:[8: "Take a look at the sticks", 6: "It's getting dark, I'll build up the fire"],
                   8:[9: "Take out your flashlight and investigate", 10: "Skirt the clearing and move on"],
                   9:[15: "||||", 16: "||||"],
                   10:[11: "I think I just imagined it...", 12: "Run!  Now's the time to run!"],
@@ -194,22 +207,30 @@ class SceneViewController: UIViewController {
   //decisionPoint unneeded for now.  In a future update, yes.
   //let decisionPoint: Bool = false
   
-  
+  let backgroundsArray: [String] = []
   
   //variables for buttons and content
   var leftButtonNextSceneNumber: Int? = nil
   var rightButtonNextSceneNumber: Int? = nil
   var leftButtonText: String? = nil
   var rightButtonText: String? = nil
+  var testButton: UIButton!
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.backgroundImage.image = #imageLiteral(resourceName: "BlurrySnowTreesScaled.jpg")
     renderStory(storyPosition, scenes, decisions)
+//    textViewDidScroll(mainText)
+    toggleTorch(on: true)
   }
   
   func renderStory( _ pos: Int, _ scene: [Int: String], _ decision:[Int:[Int:String]]) {
-    mainText.text = scene[pos]
+    mainText.scrollRangeToVisible(NSRange(location:0, length:0))
+//    textViewDidScroll(mainText)
+    removeButton()
     restartButton.isHidden = true
+    mainText.text = scene[pos]
+    appendButton(mainText)
     
     for k in decision[pos]!.keys {
       if leftButtonNextSceneNumber == nil {
@@ -238,7 +259,6 @@ class SceneViewController: UIViewController {
   }
   
   @IBAction func leftButtonPushed() {
-    print(leftButtonNextSceneNumber!)
     storyPosition = leftButtonNextSceneNumber!
     leftButtonText = nil
     leftButtonNextSceneNumber = nil
@@ -260,5 +280,58 @@ class SceneViewController: UIViewController {
     rightButton.isHidden = false
     renderStory(storyPosition, scenes, decisions)
   }
+  
+  func appendButton( _ textView: UITextView) {
+    let buttonHeight: CGFloat = 44
+    let contentInset: CGFloat = 1
     
+    textView.textContainerInset = UIEdgeInsets(top: contentInset, left: contentInset, bottom: (buttonHeight + contentInset * 2), right: contentInset)
+    
+    testButton = UIButton(frame: CGRect(x: contentInset, y: textView.contentSize.height - buttonHeight - contentInset, width: textView.contentSize.width - contentInset * 2, height: buttonHeight))
+    
+    testButton.setTitle("BUTTON", for: .normal)
+    testButton.setTitleColor(UIColor.red, for: .normal)
+    testButton.backgroundColor = UIColor.lightGray
+    
+    textView.addSubview(testButton)
+  }
+  
+  func removeButton() {
+    if let testButton = testButton {
+     testButton.removeFromSuperview()
+    } else {
+      print("No button to remove!")
+    }
+  }
+  
+  func textViewDidScroll(_ scrollView: UIScrollView) {
+    
+    leftButton.isHidden = scrollView.contentOffset.y + scrollView.bounds.height < scrollView.contentSize.height
+    
+//    if (scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.frame.size.height) {
+//      print( "View scrolled to the bottom" )
+//    }
+  }
+  
+  func toggleTorch(on: Bool) {
+    guard let device = AVCaptureDevice.default(for: .video) else { return }
+    
+    if device.hasTorch {
+      do {
+        try device.lockForConfiguration()
+        
+        if on == true {
+          device.torchMode = .on
+        } else {
+          device.torchMode = .off
+        }
+        
+        device.unlockForConfiguration()
+      } catch {
+        print("Torch could not be used")
+      }
+    } else {
+      print("Torch is not available")
+    }
+  }
 }
