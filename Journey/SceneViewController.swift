@@ -198,12 +198,6 @@ class SceneViewController: UIViewController, UITextViewDelegate {
     self.backgroundImage.image = #imageLiteral(resourceName: "BlurrySnowTreesScaled.jpg")
     updateFormatting(mainText)
     renderStory(storyPosition, scenes, decisions)
-//    UIScreen.main.brightness = 0.2
-//    toggleTorch(on: true)
-//    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-//    AudioServicesPlaySystemSound(1519)
-//    AudioServicesPlaySystemSound(1520)
-//    AudioServicesPlaySystemSound(1521)
   }
   
   func renderStory( _ pos: Int, _ scene: [Int: String], _ decision:[Int:[Int:String]]) {
@@ -212,6 +206,7 @@ class SceneViewController: UIViewController, UITextViewDelegate {
     restartButton.isHidden = true
     mainText.text = scene[pos]
     appendButton(mainText, topButton, bottomButton, restartButton)
+    snow()
     mainText.scrollRangeToVisible(NSRange(location:0, length:0))
     
     for k in decision[pos]!.keys {
@@ -292,28 +287,6 @@ class SceneViewController: UIViewController, UITextViewDelegate {
     }
   }
   
-//  func toggleTorch(on: Bool) {
-//    guard let device = AVCaptureDevice.default(for: .video) else { return }
-//
-//    if device.hasTorch {
-//      do {
-//        try device.lockForConfiguration()
-//
-//        if on == true {
-//          device.torchMode = .on
-//        } else {
-//          device.torchMode = .off
-//        }
-//
-//        device.unlockForConfiguration()
-//      } catch {
-//        print("Torch could not be used")
-//      }
-//    } else {
-//      print("Torch is not available")
-//    }
-//  }
-  
   func updateFormatting(_ textView: UITextView){
     textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: (topButton.frame.height + 8), right: 8)
     fixButtonLabels(topButton)
@@ -326,4 +299,42 @@ class SceneViewController: UIViewController, UITextViewDelegate {
     button.contentMode = .center
     button.imageView?.contentMode = .scaleAspectFit
   }
+  
+  func snow() {
+    let emitter = Emitter.get(with: #imageLiteral(resourceName: "snowFlurries"))
+    emitter.emitterPosition = CGPoint(x: view.frame.width/2, y: 0)
+    emitter.emitterSize = CGSize(width: view.frame.width, height: 2)
+    view.layer.addSublayer(emitter)
+  }
+  
+  //  The func below allows access to the phone's flashlight
+  //  func toggleTorch(on: Bool) {
+  //    guard let device = AVCaptureDevice.default(for: .video) else { return }
+  //
+  //    if device.hasTorch {
+  //      do {
+  //        try device.lockForConfiguration()
+  //
+  //        if on == true {
+  //          device.torchMode = .on
+  //        } else {
+  //          device.torchMode = .off
+  //        }
+  //
+  //        device.unlockForConfiguration()
+  //      } catch {
+  //        print("Torch could not be used")
+  //      }
+  //    } else {
+  //      print("Torch is not available")
+  //    }
+  //  }
+  
+  //All of the following play with settings on the phone to allow for a more interactive experience.  Maybe useful soon.
+  //    UIScreen.main.brightness = 0.2
+  //    toggleTorch(on: true)
+  //    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+  //    AudioServicesPlaySystemSound(1519)
+  //    AudioServicesPlaySystemSound(1520)
+  //    AudioServicesPlaySystemSound(1521)
 }

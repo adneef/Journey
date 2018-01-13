@@ -15,6 +15,7 @@
 		1C77B9FB20067DF900CE1B92 /* foggyForest.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1C77B9F820067DF900CE1B92 /* foggyForest.jpg */; };
 		1C77B9FD20067DFA00CE1B92 /* SwirlingStars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1C77B9FA20067DF900CE1B92 /* SwirlingStars.jpg */; };
 		1C77BA032006838700CE1B92 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C77BA022006838700CE1B92 /* SceneViewController.swift */; };
+		1C88682B200ACDAC001DCC2E /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C88682A200ACDAC001DCC2E /* Emitter.swift */; };
 		1CC417F42007ECFE00D1F9F1 /* BlurrySnowTreesScaled.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1CC417F32007ECFD00D1F9F1 /* BlurrySnowTreesScaled.jpg */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		1C77B9F820067DF900CE1B92 /* foggyForest.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = foggyForest.jpg; path = resources/foggyForest.jpg; sourceTree = SOURCE_ROOT; };
 		1C77B9FA20067DF900CE1B92 /* SwirlingStars.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = SwirlingStars.jpg; path = resources/SwirlingStars.jpg; sourceTree = SOURCE_ROOT; };
 		1C77BA022006838700CE1B92 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
+		1C88682A200ACDAC001DCC2E /* Emitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
 		1CC417F32007ECFD00D1F9F1 /* BlurrySnowTreesScaled.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = BlurrySnowTreesScaled.jpg; path = resources/EditedPhotos/BlurrySnowTreesScaled.jpg; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -63,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				1C77BA022006838700CE1B92 /* SceneViewController.swift */,
+				1C88682A200ACDAC001DCC2E /* Emitter.swift */,
 				1C77B9E62006765500CE1B92 /* AppDelegate.swift */,
 				1C77B9E82006765500CE1B92 /* ViewController.swift */,
 				1C77B9EA2006765500CE1B92 /* Main.storyboard */,
@@ -153,6 +156,7 @@
 			files = (
 				1C77BA032006838700CE1B92 /* SceneViewController.swift in Sources */,
 				1C77B9E92006765500CE1B92 /* ViewController.swift in Sources */,
+				1C88682B200ACDAC001DCC2E /* Emitter.swift in Sources */,
 				1C77B9E72006765500CE1B92 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
