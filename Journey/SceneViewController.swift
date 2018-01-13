@@ -192,7 +192,6 @@ class SceneViewController: UIViewController, UITextViewDelegate {
   var bottomButtonNextSceneNumber: Int? = nil
   var topButtonText: String? = nil
   var bottomButtonText: String? = nil
-  var testButton: UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -200,7 +199,6 @@ class SceneViewController: UIViewController, UITextViewDelegate {
     updateFormatting(mainText)
     renderStory(storyPosition, scenes, decisions)
 //    UIScreen.main.brightness = 0.2
-//    textViewDidScroll(mainText)
 //    toggleTorch(on: true)
 //    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
 //    AudioServicesPlaySystemSound(1519)
@@ -209,6 +207,7 @@ class SceneViewController: UIViewController, UITextViewDelegate {
   }
   
   func renderStory( _ pos: Int, _ scene: [Int: String], _ decision:[Int:[Int:String]]) {
+    backgroundImage.alpha = 0.85
     removeButton()
     restartButton.isHidden = true
     mainText.text = scene[pos]
@@ -261,6 +260,7 @@ class SceneViewController: UIViewController, UITextViewDelegate {
     topButtonNextSceneNumber = nil
     topButton.isHidden = false
     bottomButton.isHidden = false
+    updateFormatting(mainText)
     renderStory(storyPosition, scenes, decisions)
   }
   
@@ -268,17 +268,14 @@ class SceneViewController: UIViewController, UITextViewDelegate {
     let buttonHeight = buttonTop.frame.height
     let contentInset: CGFloat = 8
     
+    print("Text view content size before mod: \(textView.contentSize)")
     textView.contentSize = CGSize(width: textView.contentSize.width, height: textView.contentSize.height
     + buttonHeight * 3)
+    print("Text view content size after mod: \(textView.contentSize)")
     
-//    testButton = UIButton(frame: CGRect(x: contentInset, y: textView.contentSize.height - buttonHeight -  contentInset, width: textView.contentSize.width - contentInset * 2, height: buttonHeight))
     buttonTop.frame.origin = CGPoint(x: contentInset, y: textView.contentSize.height - buttonHeight * 3 -  contentInset)
     resetButton.frame.origin = CGPoint(x: contentInset, y: textView.contentSize.height - buttonHeight - contentInset)
     buttonBottom.frame.origin = CGPoint(x: contentInset, y: textView.contentSize.height - buttonHeight - contentInset)
-    
-//    testButton.setTitle("BUTTON", for: .normal)
-//    testButton.setTitleColor(UIColor.red, for: .normal)
-//    testButton.backgroundColor = UIColor.lightGray
     
     textView.addSubview(buttonTop)
     textView.addSubview(buttonBottom)
