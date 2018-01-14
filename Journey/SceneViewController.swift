@@ -15,11 +15,7 @@ import AudioToolbox
 class SceneViewController: UIViewController, UITextViewDelegate {
 
   //variables for the moving display parts of the app
-  @IBOutlet weak var mainText: UITextView! {
-    didSet {
-      mainText.delegate = self
-    }
-  }
+  @IBOutlet weak var mainText: UITextView!
   @IBOutlet weak var topButton: UIButton!
   @IBOutlet weak var bottomButton: UIButton!
   @IBOutlet weak var backgroundImage: UIImageView!
@@ -195,18 +191,23 @@ class SceneViewController: UIViewController, UITextViewDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.backgroundImage.image = #imageLiteral(resourceName: "BlurrySnowTreesScaled.jpg")
+    self.backgroundImage.image = #imageLiteral(resourceName: "scene1")
     updateFormatting(mainText)
     renderStory(storyPosition, scenes, decisions)
+    snow()
   }
   
   func renderStory( _ pos: Int, _ scene: [Int: String], _ decision:[Int:[Int:String]]) {
-    backgroundImage.alpha = 0.85
+//    if scene1 {
+     backgroundImage.alpha = 0.85
+//    }
+//    if scene2 {
+//      backgroundImage.alpha = 0.5
+//    }
     removeButton()
     restartButton.isHidden = true
     mainText.text = scene[pos]
     appendButton(mainText, topButton, bottomButton, restartButton)
-    snow()
     mainText.scrollRangeToVisible(NSRange(location:0, length:0))
     
     for k in decision[pos]!.keys {
@@ -246,6 +247,7 @@ class SceneViewController: UIViewController, UITextViewDelegate {
     storyPosition = bottomButtonNextSceneNumber!
     topButtonText = nil
     topButtonNextSceneNumber = nil
+    updateFormatting(mainText)
     renderStory(storyPosition, scenes, decisions)
   }
   
@@ -303,7 +305,7 @@ class SceneViewController: UIViewController, UITextViewDelegate {
   func snow() {
     let emitter = Emitter.get(with: #imageLiteral(resourceName: "snowFlurries"))
     emitter.emitterPosition = CGPoint(x: view.frame.width/2, y: 0)
-    emitter.emitterSize = CGSize(width: view.frame.width, height: 2)
+    emitter.emitterSize = CGSize(width: view.frame.width, height: 0)
     view.layer.addSublayer(emitter)
   }
   

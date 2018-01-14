@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SwirlingStars.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="OYE-BZ-vY6">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SwirlingStars" translatesAutoresizingMaskIntoConstraints="NO" id="OYE-BZ-vY6">
                                 <rect key="frame" x="16" y="20" width="343" height="627"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -45,6 +45,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SwirlingStars.jpg" width="3456" height="5184"/>
+        <image name="SwirlingStars" width="3456" height="5184"/>
     </resources>
 </document>

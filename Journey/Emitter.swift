@@ -22,9 +22,9 @@ class Emitter {
     
     let cell = CAEmitterCell()
     cell.contents = image.cgImage
-    cell.birthRate = 0.35
-    cell.lifetime = 20
-    cell.velocity = CGFloat(50)
+    cell.birthRate = 0.25
+    cell.lifetime = 50
+    cell.velocity = CGFloat(25)
     cell.emissionLongitude = (180 * .pi/180)
     cell.emissionRange = (45 * .pi/180)
     cell.scale = 0.8
