@@ -21,13 +21,12 @@ class SceneViewController: UIViewController, UITextViewDelegate {
   @IBOutlet weak var backgroundImage: UIImageView!
   @IBOutlet weak var restartButton: UIButton!
   
-  
   //variables that control the story flow and delivery content
   var storyPosition: Int = 1
   let scenes: [Int: String] =
     //MARK:  First scene
     [1: "You startle awake, your senses overwhelmed - you're laying on something soft and crunchy, your whole body feels dull and sluggish, someone whispers in your ear, your eyes can't seem to focus.  Are they even open?  Yes, they are.  You're looking up at a blurry scene of white, green, and brown shaking and twisting violently.\n\nPain.\n\nCold?\n\nYou lay there for a moment, and take in a deep, frigid breath.\n\nIt\'s both.You decide to stand up, and see what's going on.  As you try, your motion is halted.  You look down and see a large branch laying on your leg.  It doesn't look too heavy.  You might be able to lift it off.  Or you could try to wriggle out from underneath of it.\n\nWhat do you do?",
-     //MARK:  Second scene
+     //MARK: - Second scene
       
     2: """
       You push on the branch but it's too heavy to move.  You try two times, three times, but finally are forced to give up.  As you lay there, you notice more keenly the sound of the wind and the groan of the trees.
@@ -39,8 +38,9 @@ class SceneViewController: UIViewController, UITextViewDelegate {
       You wiggle out from under it. You slowly stand up.  You're groggy, feeling more aches and pains that you didn't notice until now Suddenly you get dizzy.  You reach a hand out toward the nearest tree to steady yourself, putting the other hand on your throbbing head. The wind gusts louder as the trees shake and creak.
       
       You feel something crusty on your face with your...bare hand?  It's too cold for bare hands.  Your hand comes away clean, but you're sure the crust is blood.  You must have broken that branch off this tree while running, knocked yourself out cold, and the branch dropped on your foot.  Why where you running?   You try to think back, but you can't remember.
+
       
-      You decide to look around.  You quickly notice a glove on the ground near you.  You pick it up and put it on.  Now you have a set, and your cold hand is covered.  Your vision starts to clear and you take a step away from the three.  You look around and notice tracks, footprints leading toward you, and more tracks leading away but fewer of them.  Both seem to head toward more trees, both on flat ground. There doesn't seem to be any difference in terrain.
+      You decide to look around.  You quickly notice a glove on the ground near you.  You pick it up and put it on.  Now you have a set, and your cold hand is covered.  Your vision starts to clear and you take a step away from the tree.  You look around and notice tracks, footprints leading toward you, and more tracks leading away but fewer of them.  Both seem to head toward more trees, both on flat ground. There doesn't seem to be any difference in terrain.
       
       Which way?
       """,
@@ -191,23 +191,45 @@ class SceneViewController: UIViewController, UITextViewDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.backgroundImage.image = #imageLiteral(resourceName: "scene1")
+    self.backgroundImage.image = #imageLiteral(resourceName: "scene7")
     updateFormatting(mainText)
     renderStory(storyPosition, scenes, decisions)
     snow()
   }
   
+  override func viewDidLayoutSubviews() {
+    self.mainText.translatesAutoresizingMaskIntoConstraints = true
+    self.mainText.contentSize = CGSize(width: self.mainText.frame.width, height: 60.0 + 5 * (self.mainText.frame.width / 16.0 * 5.0));
+  }
+  
+  /// This function is the heart of the app
   func renderStory( _ pos: Int, _ scene: [Int: String], _ decision:[Int:[Int:String]]) {
 //    if scene1 {
-     backgroundImage.alpha = 0.85
+//     backgroundImage.alpha = 0.5
+//      backgroundImage.alpha = 0.8(optimal
 //    }
 //    if scene2 {
 //      backgroundImage.alpha = 0.5
 //    }
-    removeButton()
-    restartButton.isHidden = true
+//    if scene3 {
+//      backgroundImage.alpha = 0.5
+//    }
+//    if scene4 {
+//      backgroundImage.alpha = 0.6
+//    }
+//    if scene5 {
+//      backgroundImage.alpha = 0.4
+//    }
+//    if scene6 {
+//      backgroundImage.alpha = 0.5
+//    }
+//    if scene7 { current
+      backgroundImage.alpha = 0.6
+//    }
+//    removeButtons()
     mainText.text = scene[pos]
-    appendButton(mainText, topButton, bottomButton, restartButton)
+//    appendButtons(mainText, topButton, bottomButton, restartButton)
+    restartButton.isHidden = true
     mainText.scrollRangeToVisible(NSRange(location:0, length:0))
     
     for k in decision[pos]!.keys {
@@ -247,7 +269,6 @@ class SceneViewController: UIViewController, UITextViewDelegate {
     storyPosition = bottomButtonNextSceneNumber!
     topButtonText = nil
     topButtonNextSceneNumber = nil
-    updateFormatting(mainText)
     renderStory(storyPosition, scenes, decisions)
   }
   
@@ -261,25 +282,25 @@ class SceneViewController: UIViewController, UITextViewDelegate {
     renderStory(storyPosition, scenes, decisions)
   }
   
-  func appendButton( _ textView: UITextView, _ buttonTop: UIButton, _ buttonBottom: UIButton, _ resetButton: UIButton) {
-    let buttonHeight = buttonTop.frame.height
+  func appendButtons( _ textView: UITextView, _ buttonTop: UIButton, _ buttonBottom: UIButton, _ resetButton: UIButton) {
+//    let buttonHeight = buttonBottom.frame.height
     let contentInset: CGFloat = 8
     
     print("Text view content size before mod: \(textView.contentSize)")
     textView.contentSize = CGSize(width: textView.contentSize.width, height: textView.contentSize.height
-    + buttonHeight * 3)
+    + 105)
     print("Text view content size after mod: \(textView.contentSize)")
     
-    buttonTop.frame.origin = CGPoint(x: contentInset, y: textView.contentSize.height - buttonHeight * 3 -  contentInset)
-    resetButton.frame.origin = CGPoint(x: contentInset, y: textView.contentSize.height - buttonHeight - contentInset)
-    buttonBottom.frame.origin = CGPoint(x: contentInset, y: textView.contentSize.height - buttonHeight - contentInset)
+    buttonTop.frame.origin = CGPoint(x: contentInset, y: textView.contentSize.height - 35 * 3 - contentInset)
+    resetButton.frame.origin = CGPoint(x: contentInset, y: textView.contentSize.height - 35 - contentInset)
+    buttonBottom.frame.origin = CGPoint(x: contentInset, y: textView.contentSize.height - 35 - contentInset)
     
     textView.addSubview(buttonTop)
     textView.addSubview(buttonBottom)
     textView.addSubview(resetButton)
   }
   
-  func removeButton() {
+  func removeButtons() {
     if let topButton = topButton, let bottomButton = bottomButton, let restartButton = restartButton {
       topButton.removeFromSuperview()
       bottomButton.removeFromSuperview()
@@ -290,7 +311,7 @@ class SceneViewController: UIViewController, UITextViewDelegate {
   }
   
   func updateFormatting(_ textView: UITextView){
-    textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: (topButton.frame.height + 8), right: 8)
+    textView.textContainerInset = UIEdgeInsets(top: 18, left: 8, bottom: (35 + 8), right: 8)
     fixButtonLabels(topButton)
     fixButtonLabels(bottomButton)
     fixButtonLabels(restartButton)

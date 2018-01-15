@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HiraginoMaruGothProN.ttc">
+            <string>HiraMaruProN-W4</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Journey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="feu-M7-M2N">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2aD-th-bHM">
+                                <rect key="frame" x="154" y="40" width="67" height="30"/>
+                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6x-No-TL4">
+                                <rect key="frame" x="0.0" y="78" width="375" height="589"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFk-8f-ImO">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="532"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mdF-FB-Ubu">
+                                                <rect key="frame" x="26" y="8" width="323" height="376"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. </string>
+                                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adL-fh-2Z8">
+                                                <rect key="frame" x="164" y="392" width="46" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="1Ry-Ik-I6d"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="16"/>
+                                                <state key="normal" title="Top"/>
+                                                <connections>
+                                                    <action selector="swapText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jYu-Ap-d3l"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsA-QU-aTO">
+                                                <rect key="frame" x="159" y="462" width="58" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="PS3-Hu-cEr"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="16"/>
+                                                <state key="normal" title="Bottom"/>
+                                                <connections>
+                                                    <action selector="swapTextBack:" destination="BYZ-38-t0r" eventType="touchUpInside" id="73R-xn-3v4"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="mdF-FB-Ubu" secondAttribute="trailing" constant="26" id="0bc-9x-kYq"/>
+                                            <constraint firstItem="lsA-QU-aTO" firstAttribute="leading" relation="lessThanOrEqual" secondItem="CFk-8f-ImO" secondAttribute="leading" constant="159" id="3pE-Ei-JS2"/>
+                                            <constraint firstItem="adL-fh-2Z8" firstAttribute="centerX" secondItem="CFk-8f-ImO" secondAttribute="centerX" id="F1K-8C-tYK"/>
+                                            <constraint firstAttribute="bottom" secondItem="lsA-QU-aTO" secondAttribute="bottom" constant="35" id="K83-5e-dF0"/>
+                                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="lsA-QU-aTO" secondAttribute="trailing" constant="158" id="Vkb-6i-T0r"/>
+                                            <constraint firstItem="mdF-FB-Ubu" firstAttribute="leading" secondItem="CFk-8f-ImO" secondAttribute="leading" constant="26" id="XAV-Jf-r6X"/>
+                                            <constraint firstItem="lsA-QU-aTO" firstAttribute="centerX" secondItem="CFk-8f-ImO" secondAttribute="centerX" id="Y0r-Yp-nF5"/>
+                                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="adL-fh-2Z8" secondAttribute="trailing" constant="165" id="f3e-LY-eib"/>
+                                            <constraint firstItem="adL-fh-2Z8" firstAttribute="leading" relation="lessThanOrEqual" secondItem="CFk-8f-ImO" secondAttribute="leading" constant="164" id="iqY-nV-KDp"/>
+                                            <constraint firstItem="mdF-FB-Ubu" firstAttribute="centerX" secondItem="CFk-8f-ImO" secondAttribute="centerX" id="nRn-BV-TZS"/>
+                                            <constraint firstItem="adL-fh-2Z8" firstAttribute="top" secondItem="mdF-FB-Ubu" secondAttribute="bottom" constant="8" id="sn4-KG-nxd"/>
+                                            <constraint firstItem="mdF-FB-Ubu" firstAttribute="top" secondItem="CFk-8f-ImO" secondAttribute="top" constant="8" id="uWV-wH-q1i"/>
+                                            <constraint firstItem="lsA-QU-aTO" firstAttribute="top" secondItem="adL-fh-2Z8" secondAttribute="bottom" constant="35" id="vCC-Uk-yYe"/>
+                                            <constraint firstItem="lsA-QU-aTO" firstAttribute="top" secondItem="adL-fh-2Z8" secondAttribute="bottom" constant="35" id="vpx-2b-AxJ"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="CFk-8f-ImO" firstAttribute="top" secondItem="m6x-No-TL4" secondAttribute="top" id="CyQ-HI-4db"/>
+                                    <constraint firstItem="CFk-8f-ImO" firstAttribute="width" secondItem="m6x-No-TL4" secondAttribute="width" id="c3T-dY-lf8"/>
+                                    <constraint firstItem="CFk-8f-ImO" firstAttribute="leading" secondItem="m6x-No-TL4" secondAttribute="leading" id="dgQ-1H-XN7"/>
+                                    <constraint firstAttribute="trailing" secondItem="CFk-8f-ImO" secondAttribute="trailing" id="esa-dc-YJY"/>
+                                    <constraint firstAttribute="bottom" secondItem="CFk-8f-ImO" secondAttribute="bottom" id="pvD-uW-xDX" userLabel="bottom = View.bottom"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2aD-th-bHM" firstAttribute="leading" relation="lessThanOrEqual" secondItem="rax-Zo-rH6" secondAttribute="leading" constant="154" id="63X-a4-lpI"/>
+                            <constraint firstItem="rax-Zo-rH6" firstAttribute="bottom" secondItem="m6x-No-TL4" secondAttribute="bottom" id="Ls0-1I-iJW"/>
+                            <constraint firstItem="m6x-No-TL4" firstAttribute="leading" secondItem="rax-Zo-rH6" secondAttribute="leading" id="Qa8-TS-j5w"/>
+                            <constraint firstItem="2aD-th-bHM" firstAttribute="top" secondItem="rax-Zo-rH6" secondAttribute="top" constant="20" id="Z4L-CY-xf3"/>
+                            <constraint firstItem="rax-Zo-rH6" firstAttribute="trailing" secondItem="m6x-No-TL4" secondAttribute="trailing" id="eao-SD-m6N"/>
+                            <constraint firstItem="m6x-No-TL4" firstAttribute="top" secondItem="2aD-th-bHM" secondAttribute="bottom" constant="8" id="foH-kP-PcW"/>
+                            <constraint firstItem="rax-Zo-rH6" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2aD-th-bHM" secondAttribute="trailing" constant="154" id="gjy-hX-NSp"/>
+                            <constraint firstItem="2aD-th-bHM" firstAttribute="centerX" secondItem="feu-M7-M2N" secondAttribute="centerX" id="mBB-Zw-lcp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rax-Zo-rH6"/>
+                    </view>
+                    <connections>
+                        <outlet property="bottomButton" destination="lsA-QU-aTO" id="hXw-zI-Ctz"/>
+                        <outlet property="mainText" destination="mdF-FB-Ubu" id="IiR-Ir-S5S"/>
+                        <outlet property="topButton" destination="adL-fh-2Z8" id="Iso-PC-66U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+</document>

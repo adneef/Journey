@@ -13,7 +13,7 @@ class Emitter {
     let emitter = CAEmitterLayer()
     emitter.emitterShape = kCAEmitterLayerLine
     emitter.cornerRadius = 0.9
-    emitter.zPosition = 10
+//    emitter.zPosition = 10
     emitter.emitterCells = generateEmitterCells(with: image)
     return emitter
   }
