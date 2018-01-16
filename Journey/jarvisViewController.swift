@@ -28,18 +28,29 @@ class jarvisViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     updateFormatting(mainText)
+    storyTitle.text = "Cold"
     renderStory(storyPosition, scenes, decisions)
     snow()
+    self.backgroundimage.image = #imageLiteral(resourceName: "scene7")
+    backgroundimage.alpha = 0.5
+//    self.automaticallyAdjustsScrollViewInsets = true
+//    self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever
     updateViewConstraints()
     }
+  
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    self.scrollView.setContentOffset(.zero, animated: false)
+  }
   
   //variables that control the story flow and delivery content
   var storyPosition: Int = 1
   
   func renderStory( _ pos: Int, _ scene: [Int: String], _ decision:[Int:[Int:String]]) {
     mainText.text = scene[pos]
+//    scrollView.setContentOffset(CGPoint(x:0, y:0), animated: true)
+//    self.scrollView.scrollRectToVisible(mainText.frame, animated: true)
     restartButton.isHidden = true
-    scrollView.setContentOffset(CGPoint(x:0, y:0), animated: false)
     
     for k in decision[pos]!.keys {
       if topButtonNextSceneNumber == nil {
@@ -60,6 +71,7 @@ class jarvisViewController: UIViewController {
     if topButtonText == "||||" {
       topButton.isHidden = true
       bottomButton.isHidden = true
+      restartButton.setTitle("Start Again", for: .normal)
       restartButton.isHidden = false
     } else {
       topButton.setTitle("\(topButtonText!)", for: .normal)
@@ -89,7 +101,7 @@ class jarvisViewController: UIViewController {
     bottomButton.isHidden = false
     updateFormatting(mainText)
     renderStory(storyPosition, scenes, decisions)
-    updateViewConstraints()
+//    updateViewConstraints()
   }
   
   func updateFormatting(_ textView: UITextView){
