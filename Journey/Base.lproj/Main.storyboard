@@ -189,7 +189,11 @@
                                                     <constraint firstAttribute="height" constant="35" id="e8I-Un-HIE"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="16"/>
-                                                <state key="normal" title="Top"/>
+                                                <size key="titleShadowOffset" width="1" height="0.0"/>
+                                                <state key="normal" title="Top">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="topButtonPushed" destination="Mpo-pN-uEe" eventType="touchUpInside" id="RGs-os-0dX"/>
                                                 </connections>
@@ -200,9 +204,28 @@
                                                     <constraint firstAttribute="height" constant="35" id="7ph-JU-RIB"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="16"/>
-                                                <state key="normal" title="Bottom"/>
+                                                <size key="titleShadowOffset" width="1" height="0.0"/>
+                                                <state key="normal" title="Bottom">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="bottomButtonPushed" destination="Mpo-pN-uEe" eventType="touchUpInside" id="kfe-dM-wrj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0k-ru-VkD">
+                                                <rect key="frame" x="143" y="427" width="90" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="lMk-Ei-RaK"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="16"/>
+                                                <size key="titleShadowOffset" width="1" height="0.0"/>
+                                                <state key="normal" title="Start Again">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="restart" destination="Mpo-pN-uEe" eventType="touchUpInside" id="bGW-ik-Nlv"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -213,13 +236,18 @@
                                             <constraint firstAttribute="bottom" secondItem="1Qx-1G-aad" secondAttribute="bottom" constant="35" id="GYQ-B3-cN3"/>
                                             <constraint firstItem="a2W-sW-mz3" firstAttribute="top" secondItem="Lp5-Ip-9AO" secondAttribute="bottom" constant="8" id="Im2-yw-Hg1"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="a2W-sW-mz3" secondAttribute="trailing" constant="165" id="JSw-W8-dYg"/>
+                                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="K0k-ru-VkD" secondAttribute="trailing" constant="164" id="Mkg-dY-XtZ"/>
                                             <constraint firstItem="1Qx-1G-aad" firstAttribute="top" secondItem="a2W-sW-mz3" secondAttribute="bottom" constant="35" id="WjT-kH-pwV"/>
                                             <constraint firstItem="a2W-sW-mz3" firstAttribute="leading" relation="lessThanOrEqual" secondItem="pMF-KS-PZm" secondAttribute="leading" constant="164" id="b5z-9m-iRU"/>
                                             <constraint firstItem="Lp5-Ip-9AO" firstAttribute="top" secondItem="pMF-KS-PZm" secondAttribute="top" constant="8" id="d97-DH-e4O"/>
+                                            <constraint firstItem="K0k-ru-VkD" firstAttribute="leading" relation="lessThanOrEqual" secondItem="pMF-KS-PZm" secondAttribute="leading" constant="165" id="hCR-zI-8Yt"/>
+                                            <constraint firstItem="K0k-ru-VkD" firstAttribute="centerX" secondItem="pMF-KS-PZm" secondAttribute="centerX" id="lDZ-BT-mZL"/>
+                                            <constraint firstItem="K0k-ru-VkD" firstAttribute="top" secondItem="a2W-sW-mz3" secondAttribute="bottom" id="q8f-lG-El3"/>
                                             <constraint firstItem="1Qx-1G-aad" firstAttribute="leading" relation="lessThanOrEqual" secondItem="pMF-KS-PZm" secondAttribute="leading" constant="159" id="qSL-ak-adg"/>
                                             <constraint firstItem="a2W-sW-mz3" firstAttribute="centerX" secondItem="pMF-KS-PZm" secondAttribute="centerX" id="u8Y-G3-gCM"/>
                                             <constraint firstItem="Lp5-Ip-9AO" firstAttribute="leading" secondItem="pMF-KS-PZm" secondAttribute="leading" constant="26" id="uBE-Ah-yAP"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="1Qx-1G-aad" secondAttribute="trailing" constant="158" id="uPL-H3-epK"/>
+                                            <constraint firstItem="1Qx-1G-aad" firstAttribute="top" secondItem="K0k-ru-VkD" secondAttribute="bottom" id="vOt-U0-7WW"/>
                                             <constraint firstAttribute="trailing" secondItem="Lp5-Ip-9AO" secondAttribute="trailing" constant="26" id="wc1-VH-ULk"/>
                                             <constraint firstItem="Lp5-Ip-9AO" firstAttribute="centerX" secondItem="pMF-KS-PZm" secondAttribute="centerX" id="xMS-MZ-ESD"/>
                                         </constraints>
@@ -251,6 +279,8 @@
                         <outlet property="backgroundimage" destination="1Zy-DJ-dzU" id="u0U-nX-VVq"/>
                         <outlet property="bottomButton" destination="1Qx-1G-aad" id="Nae-Ih-l96"/>
                         <outlet property="mainText" destination="Lp5-Ip-9AO" id="3h4-pB-10X"/>
+                        <outlet property="restartButton" destination="K0k-ru-VkD" id="Q3a-y4-BxH"/>
+                        <outlet property="scrollView" destination="IbM-n3-EdA" id="zyH-sb-tqu"/>
                         <outlet property="storyTitle" destination="luR-dH-b9c" id="Cjx-Us-vVS"/>
                         <outlet property="topButton" destination="a2W-sW-mz3" id="eSf-XI-Uz5"/>
                     </connections>

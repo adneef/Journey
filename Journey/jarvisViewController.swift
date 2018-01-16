@@ -16,6 +16,8 @@ class jarvisViewController: UIViewController {
   @IBOutlet weak var mainText: UITextView!
   @IBOutlet weak var topButton: UIButton!
   @IBOutlet weak var bottomButton: UIButton!
+  @IBOutlet weak var restartButton: UIButton!
+  @IBOutlet weak var scrollView: UIScrollView!
   
   //variables for buttons and content
   var topButtonNextSceneNumber: Int? = nil
@@ -36,7 +38,8 @@ class jarvisViewController: UIViewController {
   
   func renderStory( _ pos: Int, _ scene: [Int: String], _ decision:[Int:[Int:String]]) {
     mainText.text = scene[pos]
-    mainText.scrollRangeToVisible(NSRange(location:0, length:0))
+    restartButton.isHidden = true
+    scrollView.setContentOffset(CGPoint(x:0, y:0), animated: false)
     
     for k in decision[pos]!.keys {
       if topButtonNextSceneNumber == nil {
@@ -55,7 +58,9 @@ class jarvisViewController: UIViewController {
     }
     
     if topButtonText == "||||" {
+      topButton.isHidden = true
       bottomButton.isHidden = true
+      restartButton.isHidden = false
     } else {
       topButton.setTitle("\(topButtonText!)", for: .normal)
       bottomButton.setTitle("\(bottomButtonText!)", for: .normal)
@@ -63,14 +68,10 @@ class jarvisViewController: UIViewController {
   }
   
   @IBAction func topButtonPushed() {
-    if topButtonText != nil {
       storyPosition = topButtonNextSceneNumber!
       topButtonText = nil
       topButtonNextSceneNumber = nil
       renderStory(storyPosition, scenes, decisions)
-    } else {
-      
-    }
   }
   
   @IBAction func bottomButtonPushed() {
@@ -80,7 +81,7 @@ class jarvisViewController: UIViewController {
     renderStory(storyPosition, scenes, decisions)
   }
   
-  func restart() {
+  @IBAction func restart() {
     storyPosition = 1
     topButtonText = nil
     topButtonNextSceneNumber = nil
@@ -88,12 +89,14 @@ class jarvisViewController: UIViewController {
     bottomButton.isHidden = false
     updateFormatting(mainText)
     renderStory(storyPosition, scenes, decisions)
+    updateViewConstraints()
   }
   
   func updateFormatting(_ textView: UITextView){
     textView.textContainerInset = UIEdgeInsets(top: 18, left: 8, bottom: (35 + 8), right: 8)
     fixButtonLabels(topButton)
     fixButtonLabels(bottomButton)
+    fixButtonLabels(restartButton)
   }
   
   func fixButtonLabels(_ button: UIButton) {
