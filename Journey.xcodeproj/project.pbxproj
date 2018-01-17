@@ -14,6 +14,7 @@
 		1C77B9F12006765500CE1B92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C77B9EF2006765500CE1B92 /* LaunchScreen.storyboard */; };
 		1C88682B200ACDAC001DCC2E /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C88682A200ACDAC001DCC2E /* Emitter.swift */; };
 		1C886870200D6A13001DCC2E /* jarvisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C88686F200D6A13001DCC2E /* jarvisViewController.swift */; };
+		1C8E5245200F2219008B9412 /* FontAwesome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C8E5244200F2219008B9412 /* FontAwesome.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		1C77B9F22006765500CE1B92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C88682A200ACDAC001DCC2E /* Emitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
 		1C88686F200D6A13001DCC2E /* jarvisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jarvisViewController.swift; sourceTree = "<group>"; };
+		1C8E5244200F2219008B9412 /* FontAwesome.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome.framework; path = Carthage/Build/iOS/FontAwesome.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C8E5245200F2219008B9412 /* FontAwesome.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +47,7 @@
 			children = (
 				1C77B9E52006765500CE1B92 /* Journey */,
 				1C77B9E42006765500CE1B92 /* Products */,
+				1C8E5243200F2219008B9412 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +74,14 @@
 			path = Journey;
 			sourceTree = "<group>";
 		};
+		1C8E5243200F2219008B9412 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1C8E5244200F2219008B9412 /* FontAwesome.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -80,6 +92,7 @@
 				1C77B9DF2006765500CE1B92 /* Sources */,
 				1C77B9E02006765500CE1B92 /* Frameworks */,
 				1C77B9E12006765500CE1B92 /* Resources */,
+				1C8E5246200F22A2008B9412 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -136,6 +149,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1C8E5246200F22A2008B9412 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/FontAwesome.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1C77B9DF2006765500CE1B92 /* Sources */ = {
@@ -284,6 +314,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 882DYKWC3Y;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Journey/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adneef.Journey;
@@ -299,6 +333,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 882DYKWC3Y;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Journey/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adneef.Journey;

@@ -8,6 +8,8 @@
 
 import UIKit
 
+import FontAwesome
+
 class jarvisViewController: UIViewController {
 
   //MARK: Initialize outlet variables
