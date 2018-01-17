@@ -12,9 +12,7 @@
 		1C77B9EC2006765500CE1B92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C77B9EA2006765500CE1B92 /* Main.storyboard */; };
 		1C77B9EE2006765500CE1B92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C77B9ED2006765500CE1B92 /* Assets.xcassets */; };
 		1C77B9F12006765500CE1B92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C77B9EF2006765500CE1B92 /* LaunchScreen.storyboard */; };
-		1C77BA032006838700CE1B92 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C77BA022006838700CE1B92 /* SceneViewController.swift */; };
 		1C88682B200ACDAC001DCC2E /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C88682A200ACDAC001DCC2E /* Emitter.swift */; };
-		1C88686E200D68A6001DCC2E /* jarvis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C88686D200D68A6001DCC2E /* jarvis.storyboard */; };
 		1C886870200D6A13001DCC2E /* jarvisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C88686F200D6A13001DCC2E /* jarvisViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,9 +24,7 @@
 		1C77B9ED2006765500CE1B92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C77B9F02006765500CE1B92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C77B9F22006765500CE1B92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1C77BA022006838700CE1B92 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		1C88682A200ACDAC001DCC2E /* Emitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
-		1C88686D200D68A6001DCC2E /* jarvis.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = jarvis.storyboard; sourceTree = "<group>"; };
 		1C88686F200D6A13001DCC2E /* jarvisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jarvisViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,8 +58,6 @@
 		1C77B9E52006765500CE1B92 /* Journey */ = {
 			isa = PBXGroup;
 			children = (
-				1C88686D200D68A6001DCC2E /* jarvis.storyboard */,
-				1C77BA022006838700CE1B92 /* SceneViewController.swift */,
 				1C88686F200D6A13001DCC2E /* jarvisViewController.swift */,
 				1C88682A200ACDAC001DCC2E /* Emitter.swift */,
 				1C77B9E62006765500CE1B92 /* AppDelegate.swift */,
@@ -138,7 +132,6 @@
 				1C77B9F12006765500CE1B92 /* LaunchScreen.storyboard in Resources */,
 				1C77B9EE2006765500CE1B92 /* Assets.xcassets in Resources */,
 				1C77B9EC2006765500CE1B92 /* Main.storyboard in Resources */,
-				1C88686E200D68A6001DCC2E /* jarvis.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +143,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C886870200D6A13001DCC2E /* jarvisViewController.swift in Sources */,
-				1C77BA032006838700CE1B92 /* SceneViewController.swift in Sources */,
 				1C77B9E92006765500CE1B92 /* ViewController.swift in Sources */,
 				1C88682B200ACDAC001DCC2E /* Emitter.swift in Sources */,
 				1C77B9E72006765500CE1B92 /* AppDelegate.swift in Sources */,

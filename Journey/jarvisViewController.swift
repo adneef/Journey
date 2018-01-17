@@ -45,6 +45,12 @@ class jarvisViewController: UIViewController {
   var storyPosition: Int = 1
   
   func renderStory( _ pos: Int, _ scene: [Int: String], _ decision:[Int:[Int:String]]) {
+    
+    if pos == 2 {
+      topButton.isHidden = true
+    } else {
+      topButton.isHidden = false
+    }
     mainText.text = scene[pos]
     restartButton.isHidden = true
     
