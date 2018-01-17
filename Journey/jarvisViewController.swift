@@ -274,4 +274,32 @@ class jarvisViewController: UIViewController {
                    14:[15: "||||", 16: "||||"],
                    ]
 
+  
+//  some things for the future
+//  let backgroundsArray: [String] = []
+//  func alphaAdjust(_ backgroundImage: UIImage) {
+    //    if scene1 {
+    //     backgroundImage.alpha = 0.5
+    //      backgroundImage.alpha = 0.8(optimal
+    //    }
+    //    if scene2 {
+    //      backgroundImage.alpha = 0.5
+    //    }
+    //    if scene3 {
+    //      backgroundImage.alpha = 0.5
+    //    }
+    //    if scene4 {
+    //      backgroundImage.alpha = 0.6
+    //    }
+    //    if scene5 {
+    //      backgroundImage.alpha = 0.4
+    //    }
+    //    if scene6 {
+    //      backgroundImage.alpha = 0.5
+    //    }
+    //    if scene7 { current
+    //      backgroundImage.alpha = 0.6
+    //    }
+    //    removeButtons()
+//  }
 }

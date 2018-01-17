@@ -224,7 +224,7 @@ class SceneViewController: UIViewController, UITextViewDelegate {
 //      backgroundImage.alpha = 0.5
 //    }
 //    if scene7 { current
-      backgroundImage.alpha = 0.6
+//      backgroundImage.alpha = 0.6
 //    }
 //    removeButtons()
     mainText.text = scene[pos]
