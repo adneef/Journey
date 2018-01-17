@@ -32,9 +32,7 @@ class jarvisViewController: UIViewController {
     renderStory(storyPosition, scenes, decisions)
     snow()
     self.backgroundimage.image = #imageLiteral(resourceName: "scene7")
-    backgroundimage.alpha = 0.5
-//    self.automaticallyAdjustsScrollViewInsets = true
-//    self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever
+    backgroundimage.alpha = 0.6
     updateViewConstraints()
     }
   
@@ -43,13 +41,11 @@ class jarvisViewController: UIViewController {
     self.scrollView.setContentOffset(.zero, animated: false)
   }
   
-  //variables that control the story flow and delivery content
+  //variables that control the story flow and delivery of content
   var storyPosition: Int = 1
   
   func renderStory( _ pos: Int, _ scene: [Int: String], _ decision:[Int:[Int:String]]) {
     mainText.text = scene[pos]
-//    scrollView.setContentOffset(CGPoint(x:0, y:0), animated: true)
-//    self.scrollView.scrollRectToVisible(mainText.frame, animated: true)
     restartButton.isHidden = true
     
     for k in decision[pos]!.keys {
@@ -101,7 +97,6 @@ class jarvisViewController: UIViewController {
     bottomButton.isHidden = false
     updateFormatting(mainText)
     renderStory(storyPosition, scenes, decisions)
-//    updateViewConstraints()
   }
   
   func updateFormatting(_ textView: UITextView){
