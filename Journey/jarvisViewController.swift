@@ -13,13 +13,17 @@ import FontAwesome
 class jarvisViewController: UIViewController {
 
   //MARK: Initialize outlet variables
-  @IBOutlet weak var backgroundimage: UIImageView!
   @IBOutlet weak var storyTitle: UILabel!
+  @IBOutlet weak var backgroundimage: UIImageView!
+  @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var mainText: UITextView!
+  
   @IBOutlet weak var topButton: UIButton!
   @IBOutlet weak var bottomButton: UIButton!
   @IBOutlet weak var restartButton: UIButton!
-  @IBOutlet weak var scrollView: UIScrollView!
+  
+  @IBOutlet weak var homeButton: UIButton!
+  @IBOutlet weak var settingsButton: UIButton!
   
   //variables for buttons and content
   var topButtonNextSceneNumber: Int? = nil
@@ -36,7 +40,15 @@ class jarvisViewController: UIViewController {
     self.backgroundimage.image = #imageLiteral(resourceName: "scene7")
     backgroundimage.alpha = 0.6
     updateViewConstraints()
+    setNavButtonIcons()
     }
+  
+  func setNavButtonIcons() {
+    homeButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 30)
+    homeButton.setTitle(String.fontAwesomeIcon(name: .home), for: .normal)
+    settingsButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 30)
+    settingsButton.setTitle(String.fontAwesomeIcon(name: .cogs), for: .normal)
+  }
   
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
